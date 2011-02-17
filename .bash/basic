@@ -119,8 +119,14 @@ prompt_compact() {
     PS2="> "
 }
 
+parse_git_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  GIT_INFO=" ("${ref#refs/heads/}")"
+}
+
 prompt_color() {
-    PS1="${GREY}[${COLOR1}\u${GREY}@${COLOR2}\h${GREY}:${COLOR1}\W${GREY}]${COLOR2}$P${PS_CLEAR} "
+    parse_git_branch;
+    PS1="${GREY}[${COLOR1}\u${GREY}@${COLOR2}\h${GREY}:${COLOR1}\W${GREY}${RED}${GIT_INFO}${GREY}]${COLOR2}$P${PS_CLEAR} "
     PS2="\[[33;1m\]continue \[[0m[1m\]> "
 }
 
