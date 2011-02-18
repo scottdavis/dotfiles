@@ -1,5 +1,5 @@
+export PATH="/var/html/git/bin:/var/html/php/bin:/var/html/ree/bin:/var/html/python/bin:/var/html/perl/bin:/var/html/mysql/bin:/var/html/apache/bin:/var/html/sqlite/bin:/var/html/imagemagick/bin:$PATH"
 export PATH="/Volumes/Storage/local/bin:~/bin:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
-source /var/html/add_path_opo_binaries.sh
 
