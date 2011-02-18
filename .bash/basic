@@ -36,7 +36,7 @@ unset MAILCHECK
 ulimit -S -c 0
 
 # default umask
-umask 0022
+umask 0002
 
 # ----------------------------------------------------------------------
 # PATH
