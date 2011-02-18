@@ -1,2 +1,5 @@
 export PATH="/Volumes/Storage/local/bin:~/bin:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+source /var/html/add_path_opo_binaries.sh
+
