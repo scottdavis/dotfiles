@@ -1,9 +1,7 @@
 #. ~/.zsh/aliases
 
 # changing directory to code project
-function work { cd /Volumes/Storage/Work/$1; }
-
-function storage { cd /Volumns/Storage/$1; }
+function work { cd ~/Work/$1; }
 
 # misc
 alias reload='. ~/.bash_profile'
