@@ -3,7 +3,7 @@ require 'fileutils'
 
 task :default => :install
 
-TEST_MODE = true
+TEST_MODE = ENV['TEST_MODE'].nil? ? false : true
 
 BLACK_LIST = [
   'completion_scripts',
@@ -13,23 +13,26 @@ BLACK_LIST = [
   'completions',
   'aliases',
   'Rakefile',
-  'tempaltes'
+  'templates'
 ]
 
 $files_to_edit = []
 
-task :install => [:vim, :dotfiles] do
-  Rake::Task["edit_templates"].execute unless TEST_MODE
-end
+task :install => [:vim, :dotfiles, :edit_templates]
+
+
+
 desc "initalize git submodules" 
 task :git_submodules do
   puts "Initializing submodules..."
-  sh   "git submodule init && git submodule update"
+  sh   "git submodule init && git submodule update --remote"
 end
 
 desc "setup Vim"
 task :vim => :git_submodules do
   puts "linking vimrc..."
+  system "rm -rf ~/.vim"
+  system "ln -s ~/dotfiles/vimfiles/ ~/.vim"
   install_file('vimfiles/vimrc', '.vimrc')
   puts "Installing/Updating vundles..."
   sh   "vim +BundleInstall! +BundleClean +qa" unless TEST_MODE
@@ -56,7 +59,7 @@ end
 desc "Edit templates" 
 task :edit_templates => [:install_tempaltes] do
   $files_to_edit.each do |file|
-    sh `vim #{file}`
+    sh "vim #{file}"
   end
 end
 
@@ -68,16 +71,17 @@ def path_from_home(file)
 end
 
 def link_file(source, file)
-  puts "linking ~/#{file}"
-  system %Q{ln -s "$PWD/#{source}" "$HOME/#{file}"} unless TEST_MODE
+  puts "linking #{file}"
+  system "ln -s ~/dotfiles/#{source} #{file}" unless TEST_MODE
 end
 
 def install_file(source, file)
-  if File.exist?(path_from_home(file))
+  file = path_from_home(file)
+  if exists?(file)
     if $replace_all
       replace_file(source, file)
     else
-      print "overwrite #{path_from_home(file)}? [ynaq] "
+      print "overwrite #{file}? [ynaq] "
       case $stdin.gets.chomp
         when 'a'
           $replace_all = true
@@ -95,13 +99,18 @@ def install_file(source, file)
   end
 end
 
+
+def exists?(file)
+  File.exist?(file) || File.symlink?(file)
+end
+
 def replace_file(source, file)
   remove_file(file)
   link_file(source, file)
 end
 
 def cp_file(from, to)
-  if File.exist?(to)
+  if exists?(to)
     print "overwrite #{to} [yn]"
     case $stdin.gets.chomp
     when 'y'
@@ -119,5 +128,5 @@ end
 
 def remove_file(file)
   puts "removing #{file}"
-  FileUtils.unlink(path_from_home(file)) unless TEST_MODE
+  sh "rm #{path_from_home(file)}" unless TEST_MODE
 end
