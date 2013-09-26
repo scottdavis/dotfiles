@@ -11,4 +11,4 @@ source ~/.bash/basic
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-source ~/.bash/paths
+source ~/dotfiles/paths

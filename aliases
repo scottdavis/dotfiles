@@ -5,3 +5,22 @@ function work { cd ~/Work/$1; }
 
 # misc
 alias reload='. ~/.bash_profile'
+
+function crush_pngs() {
+    for png in `find $1 -name "*.png"`;
+    do
+        echo "crushing $png"
+            pngcrush -brute "$png" temp.png
+            mv -f temp.png $png
+            done;
+}
+
+function resize_for_retina() {
+    for png in `find $1 -name "*.png"`;
+    do
+        echo "converting $png";
+    convert -resize 50% $png temp.png;
+    mv $png ${png%.*}@2x.png;
+    mv temp.png $png;
+    done;
+}
