@@ -1,0 +1,36 @@
+-- psql prompt can be customized
+\set PROMPT1 '%[%033[1;33m%]%M:%>%[%033[1;32m%] %n@%/%R%[%033[0m%]%# '
+\set PROMPT2 :PROMPT1
+\set PROMPT3 '>> '
+
+-- Missing LIMIT fetch count is set to 1000
+\set FETCH_COUNT 1000
+
+-- Set pager to off
+\pset pager off
+
+-- I want see 'NULL' for null value
+\pset null 'NULL'
+
+-- Get rid of duplicate sequences in the history
+\set HISTCONTROL ignoredups
+-- Set the command history file names for each host and database
+\set HISTFILE ~/Document/psql/.psql_history-:HOST-:DBNAME
+-- Set the number of commands to store in the command history
+\set HISTSIZE 2000
+
+-- Encoding
+\encoding unicode
+
+-- Enable expanded output
+\x on
+
+-- Set timing on and see how long query took
+\timing
+
+
+-- SELECT * from :rtsize as foo;
+\set rtsize '(select table_schema, table_name, pg_relation_size( quote_ident( table_schema ) || \'.\' || quote_ident( table_name ) ) as size, pg_total_relation_size( quote_ident( table_schema ) || \'.\' || quote_ident( table_name ) ) as total_size  from information_schema.tables where table_type = \'BASE TABLE\' and table_schema not in (\'information_schema\', \'pg_catalog\') order by pg_relation_size( quote_ident( table_schema ) || \'.\' || quote_ident( table_name ) ) desc, table_schema, table_name)'
+
+-- SELECT * from :tsize as foo;
+\set tsize '(select table_schema, table_name, pg_size_pretty(size) as size, pg_size_pretty(total_size) as total_size from (:rtsize) x order by x.size desc, x.total_size desc, table_schema, table_name)'
