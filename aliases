@@ -2,9 +2,12 @@
 
 # changing directory to code project
 function work { cd ~/Work/$1; }
-
+function docs { cd ~/Documents/$1; }
+function home { cd ~/$1; }
+function downloads { cd ~/Downloads/$1; }
 # misc
 alias reload='. ~/.bash_profile'
+alias rsync='rsync -v --progress'
 
 function crush_pngs() {
     for png in `find $1 -name "*.png"`;
