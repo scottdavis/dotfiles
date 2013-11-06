@@ -5,6 +5,7 @@ function work { cd ~/Work/$1; }
 function docs { cd ~/Documents/$1; }
 function home { cd ~/$1; }
 function downloads { cd ~/Downloads/$1; }
+function oss { cd ~/OSS/$1; }
 # misc
 alias reload='. ~/.bash_profile'
 alias rsync='rsync -v --progress'
@@ -26,4 +27,8 @@ function resize_for_retina() {
     mv $png ${png%.*}@2x.png;
     mv temp.png $png;
     done;
+}
+
+function battery_status() {
+    pmset -g batt;
 }
