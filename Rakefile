@@ -51,22 +51,22 @@ task :dotfiles do
   file_list.each {|file| install_file(file, ".#{file}")}
 end
 
-desc "install local dot file templates" 
-task :install_tempaltes do
-  Dir['templates/**/*'].each do |file|
-    puts "Installing template: #{file}"
-    new_file = path_from_home(".#{File.basename(file)}")
-    $files_to_edit << new_file
-    cp_file(file, new_file)
-  end
-end
+#desc "install local dot file templates" 
+#task :install_tempaltes do
+  #Dir['templates/**/*'].each do |file|
+    #puts "Installing template: #{file}"
+    #new_file = path_from_home(".#{File.basename(file)}")
+    #$files_to_edit << new_file
+    #cp_file(file, new_file)
+  #end
+#end
 
-desc "Edit templates" 
-task :edit_templates => [:install_tempaltes] do
-  $files_to_edit.each do |file|
-    sh "vim #{file}"
-  end
-end
+#desc "Edit templates" 
+#task :edit_templates => [:install_tempaltes] do
+  #$files_to_edit.each do |file|
+    #sh "vim #{file}"
+  #end
+#end
 
 #helper functions
 $replace_all = false
