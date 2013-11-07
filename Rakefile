@@ -18,7 +18,7 @@ BLACK_LIST = [
 
 $files_to_edit = []
 
-task :install => [:vim, :dotfiles, :edit_templates]
+task :install => [:vim, :dotfiles]
 
 
 
