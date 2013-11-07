@@ -25,7 +25,12 @@ task :install => [:vim, :dotfiles, :edit_templates]
 desc "initalize git submodules" 
 task :git_submodules do
   puts "Initializing submodules..."
-  sh   "git submodule init && git submodule update --remote"
+  submodule_command =  "git submodule init && git submodule update --remote"
+  sh submodule_command
+  Dir.chdir('vimfiles') do
+    puts "Loading vimfiles submodules"
+    sh submodule_command
+  end
 end
 
 desc "setup Vim"
