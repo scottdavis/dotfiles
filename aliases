@@ -10,6 +10,7 @@ function oss { cd ~/OSS/$1; }
 alias reload='. ~/.bash_profile'
 alias rsync='rsync -v --progress'
 alias home_tunnel_grunt='ssh -N -L 9000:127.0.0.1:9000 sdavis@192.168.5.108'
+alias grep="grep --color=auto -H"
 
 function crush_pngs() {
     for png in `find $1 -name "*.png"`;
