@@ -24,7 +24,7 @@
   whitespace = trailing-space,space-before-tab,tab-in-indent
   autocrlf = false
   savecrlf = true
-  editor = "vi"
+  editor = vim
   pager = tee
 [push]
   default = current
@@ -38,3 +38,6 @@
   pruneExpire = "1 week ago"
 
 
+[user]
+    email = me@sdavis.info
+	name = Scott Davis

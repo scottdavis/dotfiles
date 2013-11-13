@@ -18,14 +18,19 @@ BLACK_LIST = [
 
 $files_to_edit = []
 
-task :install => [:vim, :dotfiles, :edit_templates]
+task :install => [:vim, :dotfiles]
 
 
 
 desc "initalize git submodules" 
 task :git_submodules do
   puts "Initializing submodules..."
-  sh   "git submodule init && git submodule update --remote"
+  submodule_command =  "git submodule init && git submodule update --remote"
+  sh submodule_command
+  Dir.chdir('vimfiles') do
+    puts "Loading vimfiles submodules"
+    sh submodule_command
+  end
 end
 
 desc "setup Vim"
@@ -46,22 +51,22 @@ task :dotfiles do
   file_list.each {|file| install_file(file, ".#{file}")}
 end
 
-desc "install local dot file templates" 
-task :install_tempaltes do
-  Dir['templates/**/*'].each do |file|
-    puts "Installing template: #{file}"
-    new_file = path_from_home(".#{File.basename(file)}")
-    $files_to_edit << new_file
-    cp_file(file, new_file)
-  end
-end
+#desc "install local dot file templates" 
+#task :install_tempaltes do
+  #Dir['templates/**/*'].each do |file|
+    #puts "Installing template: #{file}"
+    #new_file = path_from_home(".#{File.basename(file)}")
+    #$files_to_edit << new_file
+    #cp_file(file, new_file)
+  #end
+#end
 
-desc "Edit templates" 
-task :edit_templates => [:install_tempaltes] do
-  $files_to_edit.each do |file|
-    sh "vim #{file}"
-  end
-end
+#desc "Edit templates" 
+#task :edit_templates => [:install_tempaltes] do
+  #$files_to_edit.each do |file|
+    #sh "vim #{file}"
+  #end
+#end
 
 #helper functions
 $replace_all = false
