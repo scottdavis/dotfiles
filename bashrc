@@ -1,3 +1,4 @@
+export TERM=xterm-256color
 source ~/dotfiles/aliases
 source ~/dotfiles/completions
 #source ~/.bash/config
