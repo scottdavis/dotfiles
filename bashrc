@@ -10,6 +10,9 @@ fi
 
 source ~/dotfiles/basic
 
+#rvm include
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+#screenenator include
+if [[ -s $HOME/.screeninator/scripts/screeninator ]] ; then source $HOME/.screeninator/scripts/screeninator ; fi
 
 source ~/dotfiles/paths
