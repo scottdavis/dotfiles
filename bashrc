@@ -1,4 +1,5 @@
 export TERM=xterm-256color
+export EDITOR='vim'
 source ~/dotfiles/aliases
 source ~/dotfiles/completions
 #source ~/.bash/config
