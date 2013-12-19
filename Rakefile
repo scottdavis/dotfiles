@@ -69,7 +69,7 @@ end
 #end
 
 #helper functions
-$replace_all = false
+$replace_all = true
 
 def path_from_home(file)
  File.join(ENV['HOME'], file)
