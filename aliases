@@ -34,3 +34,7 @@ function resize_for_retina() {
 function battery_status() {
     pmset -g batt;
 }
+
+function replace_all_in_repo() {
+   perl -p -i -e $1  `git grep -l $2 | awk '{ print $1 }'` 
+}
