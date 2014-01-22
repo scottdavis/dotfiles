@@ -9,6 +9,10 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
+if [ -f ~/.bashrc.local ]; then
+  source ~/.bashrc.local
+fi
+
 source ~/dotfiles/basic
 
 #rvm include
