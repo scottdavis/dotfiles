@@ -36,5 +36,5 @@ function battery_status() {
 }
 
 function replace_all_in_repo() {
-   perl -p -i -e $1  `git grep -l $2 | awk '{ print $1 }'` 
+  git grep -l $1 | xargs perl -p -i -e "s/$1/$2/g"
 }
