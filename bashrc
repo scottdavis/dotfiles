@@ -21,3 +21,5 @@ source ~/dotfiles/basic
 if [[ -s $HOME/.screeninator/scripts/screeninator ]] ; then source $HOME/.screeninator/scripts/screeninator ; fi
 
 source ~/dotfiles/paths
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
