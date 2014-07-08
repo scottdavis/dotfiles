@@ -13,7 +13,10 @@ BLACK_LIST = [
   'completions',
   'aliases',
   'Rakefile',
-  'templates'
+  'templates',
+  'osx',
+  'bash_prompt',
+  'functions'
 ]
 
 $files_to_edit = []

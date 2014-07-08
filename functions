@@ -1,0 +1,107 @@
+# push SSH public key to another box
+push_ssh_cert() {
+    local _host
+    test -f ~/.ssh/id_dsa.pub || ssh-keygen -t dsa
+    for _host in "$@";
+    do
+        echo $_host
+        ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
+    done
+}
+
+function crush_pngs() {
+    for png in `find $1 -name "*.png"`;
+    do
+        echo "crushing $png"
+            pngcrush -brute "$png" temp.png
+            mv -f temp.png $png
+            done;
+}
+
+function resize_for_retina() {
+    for png in `find $1 -name "*.png"`;
+    do
+        echo "converting $png";
+    convert -resize 50% $png temp.png;
+    mv $png ${png%.*}@2x.png;
+    mv temp.png $png;
+    done;
+}
+
+function battery_status() {
+    pmset -g batt;
+}
+
+function replace_all_in_repo() {
+  git grep -l $1 | xargs perl -p -i -e "s/$1/$2/g"
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+function targz() {
+  local tmpFile="${@%/}.tar";
+  tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+
+  size=$(
+    stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+    stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+  );
+
+  local cmd="";
+  if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+    # the .tar file is smaller than 50 MB and Zopfli is available; use it
+    cmd="zopfli";
+  else
+    if hash pigz 2> /dev/null; then
+      cmd="pigz";
+    else
+      cmd="gzip";
+    fi;
+  fi;
+
+  echo "Compressing .tar using \`${cmd}\`…";
+  "${cmd}" -v "${tmpFile}" || return 1;
+  [ -f "${tmpFile}" ] && rm "${tmpFile}";
+  echo "${tmpFile}.gz created successfully.";
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+  if du -b /dev/null > /dev/null 2>&1; then
+    local arg=-sbh;
+  else
+    local arg=-sh;
+  fi
+  if [[ -n "$@" ]]; then
+    du $arg -- "$@";
+  else
+    du $arg .[^.]* *;
+  fi;
+}
+
+# `v` with no arguments opens the current directory in Vim, otherwise opens the
+# given location
+function v() {
+  if [ $# -eq 0 ]; then
+    vim .;
+  else
+    vim "$@";
+  fi;
+}
+
+# `o` with no arguments opens the current directory, otherwise opens the given
+# location
+function o() {
+  if [ $# -eq 0 ]; then
+    open .;
+  else
+    open "$@";
+  fi;
+}
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}

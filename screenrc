@@ -1,6 +1,10 @@
 # trick to make ssh-agent reconnect when resuming screen
 setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER-screen"
 term "xterm-256color"
+# Always start `screen` with UTF-8 enabled (`screen -U`)
+defutf8 on
+# Set a large scrollback buffer
+defscrollback 32000
 # Allow xterm / Terminal scrollbars to access the scrollback buffer. This
 # enables the behavior you'd expect, instead of losing the content that scrolls
 # out of the window.
