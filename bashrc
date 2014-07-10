@@ -1,7 +1,9 @@
-for file in ~/dotfiles/{basic,paths,bash_prompt,aliases,completions,functions}; do
-  source $file;
-done;
-unset file;
+if echo "$-" | grep i > /dev/null; then
+  for file in ~/dotfiles/{basic,paths,bash_prompt,aliases,completions,functions}; do
+    source $file;
+  done;
+  unset file;
+fi
 
 # use .localrc for settings specific to one system
 if [ -r ~/.localrc ]; then
