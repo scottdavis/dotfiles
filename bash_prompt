@@ -9,6 +9,14 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
   export TERM='xterm-256color';
 fi;
 
+prompt_ruby() {
+    local ruby_version="$(ruby -v | awk '{print $2}')";
+    if [[ -z "$ruby_version" ]]; then
+        return;
+    fi;
+    echo -e " ${red}(${ruby_version})";
+}
+
 prompt_git() {
   local s='';
   local branchName='';
@@ -111,6 +119,7 @@ PS1+="\[${white}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\w"; # working directory
+PS1+="\$(prompt_ruby)"; # get ruby version
 PS1+="\$(prompt_git \"${white} on ${violet}\")"; # Git repository details
 PS1+="\n";
 PS1+="\[${white}\]\$ \[${reset}\]"; # `$` (and reset color)
