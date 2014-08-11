@@ -2,6 +2,7 @@
 alias rsync='rsync -v --progress'
 alias home_tunnel_grunt='ssh -N -L 9000:127.0.0.1:9000 sdavis@192.168.5.108'
 alias grep="grep --color=auto -H"
+alias voidrays="open https://www.youtube.com/watch?v=jzq2O54LLIw"
 
 
 alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
