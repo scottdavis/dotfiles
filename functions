@@ -1,3 +1,11 @@
+#unset proxy
+
+unproxy() {
+    unset http_proxy;
+    unset https_proxy
+    unset ALL_PROXY;
+}
+
 # push SSH public key to another box
 push_ssh_cert() {
     local _host
