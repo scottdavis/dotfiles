@@ -5,6 +5,9 @@ alias grep="grep --color=auto -H"
 alias voidrays="open https://www.youtube.com/watch?v=jzq2O54LLIw"
 
 
+alias xdebug-on='export XDEBUG_CONFIG="remote_enable=1"'
+alias xdebug-off='unset XDEBUG_CONFIG'
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
