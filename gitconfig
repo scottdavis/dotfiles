@@ -12,7 +12,6 @@
   br = branch
   lg = log --graph --decorate --date=relative --abbrev-commit --pretty=format:'%Cred%h%Creset [%an]%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset'
   recent = reflog -20 --date=relative
-  pb = planbox
 [rerere]
   enabled = true
 [merge]
