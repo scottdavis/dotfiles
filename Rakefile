@@ -42,6 +42,7 @@ task :vim => :git_submodules do
   system "rm -rf ~/.vim"
   system "ln -s ~/dotfiles/vimfiles/ ~/.vim"
   install_file('vimfiles/vimrc', '.vimrc')
+  install_file('vimfiles/nvimrc', '.nvimrc')
   puts "Installing/Updating vundles..."
   sh   "vim +BundleInstall! +BundleClean +qa" unless TEST_MODE
   puts "Done!"
