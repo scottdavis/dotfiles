@@ -5,7 +5,7 @@ PATH="/usr/local/bin:$PATH"
 # put ~/bin on PATH if you have it
 PATH="$HOME/bin:$HOME/dotfiles/scripts:$PATH"
 PATH=".bin/:$PATH"
-PATH="./node_modules/bin:$PATH"
+PATH="./node_modules/.bin:$PATH"
 
 export PATH="./bin:/Volumes/Storage/local/bin:~/bin:~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin"
