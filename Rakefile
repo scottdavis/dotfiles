@@ -1,3 +1,4 @@
+require 'rbconfig'
 require 'rake'
 require 'fileutils'
 
@@ -21,9 +22,25 @@ BLACK_LIST = [
 
 $files_to_edit = []
 
-task :install => [:vim, :dotfiles]
+def os
+@os ||= (
+  host_os = RbConfig::CONFIG['host_os']
+  case host_os
+  when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+    :windows
+  when /darwin|mac os/
+    :macosx
+  when /linux/
+    :linux
+  when /solaris|bsd/
+    :unix
+  else
+    raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+  end
+)
+end
 
-
+task :install => [:vim, :dotfiles, :ycm]
 
 desc "initalize git submodules" 
 task :git_submodules do
@@ -55,22 +72,14 @@ task :dotfiles do
   file_list.each {|file| install_file(file, ".#{file}")}
 end
 
-#desc "install local dot file templates" 
-#task :install_tempaltes do
-  #Dir['templates/**/*'].each do |file|
-    #puts "Installing template: #{file}"
-    #new_file = path_from_home(".#{File.basename(file)}")
-    #$files_to_edit << new_file
-    #cp_file(file, new_file)
-  #end
-#end
-
-#desc "Edit templates" 
-#task :edit_templates => [:install_tempaltes] do
-  #$files_to_edit.each do |file|
-    #sh "vim #{file}"
-  #end
-#end
+desc "instal YCM"
+task :ycm do
+  chdir "#{ENV['HOME']}/dotfiles/vimfiles/bundle/YouCompleteMe" do
+    sh "pip install neovim"
+    sh "sudo aptitude install cmake -y" if os == :linux
+    sh "./install,py"
+  end
+end
 
 #helper functions
 $replace_all = true
