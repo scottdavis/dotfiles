@@ -72,13 +72,13 @@ task :dotfiles do
   file_list.each {|file| install_file(file, ".#{file}")}
 end
 
-desc "instal YCM"
+esc "instal YCM"
 task :ycm do
   chdir "#{ENV['HOME']}/dotfiles/vimfiles/bundle/YouCompleteMe" do
-  ¦ sh "sudo pip install --upgrade pip"
-  ¦ sh "sudo pip install neovim"
-  ¦ sh "sudo aptitude install cmake -y" if os == :linux
-  ¦ sh "./install,py"
+    sh "aptitude install cmake python2.7-dev python-pip" if os == :linux
+  ¦ sh "pip install --upgrade pip"
+  ¦ sh "pip install neovim"
+  ¦ sh "./install.py"
   end
 end
 
