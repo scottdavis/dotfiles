@@ -40,7 +40,7 @@ def os
 )
 end
 
-task :install => [:vim, :dotfiles, :ycm]
+task :install => [:vim, :dotfiles]
 
 desc "initalize git submodules" 
 task :git_submodules do
@@ -72,7 +72,7 @@ task :dotfiles do
   file_list.each {|file| install_file(file, ".#{file}")}
 end
 
-esc "instal YCM"
+desc "instal YCM"
 task :ycm do
   chdir "#{ENV['HOME']}/dotfiles/vimfiles/bundle/YouCompleteMe" do
     sh "aptitude install cmake python2.7-dev python-pip" if os == :linux
