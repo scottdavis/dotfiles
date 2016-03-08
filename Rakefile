@@ -59,7 +59,7 @@ task :vim => :git_submodules do
   system "rm -rf ~/.vim"
   system "ln -s ~/dotfiles/vimfiles/ ~/.vim"
   install_file('vimfiles/vimrc', '.vimrc')
-  install_file('vimfiles/nvimrc', '.nvimrc')
+  install_file('vimfiles/nvimrc', '.config/nvim/init.vim')
   puts "Installing/Updating vundles..."
   sh   "vim +BundleInstall! +BundleClean +qa" unless TEST_MODE
   puts "Done!"
@@ -95,6 +95,7 @@ def link_file(source, file)
 end
 
 def install_file(source, file)
+  mkdir_p path_from_home(File.dirname(file))
   file = path_from_home(file)
   if exists?(file)
     if $replace_all
