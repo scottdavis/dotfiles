@@ -53,6 +53,18 @@ task :git_submodules do
   end
 end
 
+task :install_config do
+    mkdir_p "~/.config"
+    Dir["config/**/*"].each do |file|
+        to = file.gsub(%r{config/}, ".config/")
+        if File.directory?(file)
+            mkdir_p to
+            next
+        end
+        install_file(file, to)
+    end
+end
+
 desc "setup Vim"
 task :vim => :git_submodules do
   puts "linking vimrc..."
