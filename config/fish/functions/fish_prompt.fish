@@ -38,6 +38,6 @@ function fish_prompt
         printf "(%s) " (set_color blue)(basename $VIRTUAL_ENV)(set_color normal)
     end
     set_color --bold white
-    printf 'ℷ '
+    printf '$ '
     set_color normal
 end
