@@ -15,12 +15,12 @@ function fish_prompt
         set host_color b58900
     end
 
-    set_color $user_color
+    set_color --bold $user_color
     printf '%s' (whoami)
     set_color --bold white
     printf ' at '
 
-    set_color $host_color
+    set_color --bold $host_color
     echo -n (prompt_hostname)
     set_color --bold white
     printf ' in '
