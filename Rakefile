@@ -6,20 +6,6 @@ task :default => :install
 
 TEST_MODE = ENV['TEST_MODE'].nil? ? false : true
 
-BLACK_LIST = [
-  'completion_scripts',
-  'vimfiles',
-  'paths',
-  'basic',
-  'completions',
-  'aliases',
-  'Rakefile',
-  'templates',
-  'osx',
-  'bash_prompt',
-  'functions'
-]
-
 $files_to_edit = []
 
 def os
@@ -75,25 +61,25 @@ end
 
 desc "Link dotfiles" 
 task :dotfiles do
-  file_list = Dir["*"].to_a
-  file_list = file_list.delete_if { |file| BLACK_LIST.include?(file) }.compact 
-  file_list.each {|file| install_file(file, ".#{file}")}
+  file_list = Dir["dot_configs/*"].to_a
+  file_list = file_list.delete_if {|file| File.directory?(File.expand_path(file)) || File.basename(file) == '.' }
+  file_list.each {|file| install_file(file, ".#{File.basename(file)}")}
 end
 
 #helper functions
 $replace_all = true
 
 def path_from_home(file)
- File.join(ENV['HOME'], file)
+  File.join(ENV['HOME'], file)
 end
 
 def link_file(source, file)
-  puts "linking #{file}"
-  system "ln -s ~/dotfiles/#{source} #{file}" unless TEST_MODE
+  puts "linking #{file} to #{source}"
+  system "ln -sf ~/dotfiles/#{source} #{file}" unless TEST_MODE
 end
 
 def install_file(source, file)
-  mkdir_p path_from_home(File.dirname(file))
+  mkdir_p path_from_home(File.dirname(file)) unless File.dirname(file) == '.'
   file = path_from_home(file)
   if exists?(file)
     if $replace_all
@@ -101,13 +87,13 @@ def install_file(source, file)
     else
       print "overwrite #{file}? [ynaq] "
       case $stdin.gets.chomp
-        when 'a'
-          $replace_all = true
-          replace_file(source, file)
-        when 'y'
-          replace_file(source, file)
-        when 'q'
-          exit
+      when 'a'
+        $replace_all = true
+        replace_file(source, file)
+      when 'y'
+        replace_file(source, file)
+      when 'q'
+        exit
       else
         puts "skipping ~/#{file}"
       end

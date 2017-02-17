@@ -1,5 +1,5 @@
 if echo "$-" | grep i > /dev/null; then
-  for file in ~/dotfiles/{basic,paths,bash_prompt,aliases,completions,functions}; do
+  for file in ~/dotfiles/bash/{basic,paths,bash_prompt,aliases,completions,functions}; do
     source $file;
   done;
   unset file;
