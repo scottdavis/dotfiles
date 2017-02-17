@@ -26,7 +26,7 @@ def os
 )
 end
 
-task :install => [:vim, :dotfiles]
+task :install => [:install_config, :dotfiles, :nvim]
 
 desc "initalize git submodules" 
 task :git_submodules do
@@ -51,11 +51,12 @@ task :install_config do
     end
 end
 
-desc "setup Vim"
-task :vim do
+desc "setup nvim"
+task :nvim do
   rm_rf "~/.vim"
-  puts "Installing/Updating vundles..."
-  sh   "nvim +BundleInstall! +BundleClean +qa" unless TEST_MODE
+	rm_rf "~/dotfiles/vimfiles"
+  puts "Installing/Updating plugs..."
+  sh   "nvim +PlugInstall +qa" unless TEST_MODE
   puts "Done!"
 end
 
