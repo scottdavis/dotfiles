@@ -66,14 +66,10 @@ task :install_config do
 end
 
 desc "setup Vim"
-task :vim => :git_submodules do
-  puts "linking vimrc..."
-  system "rm -rf ~/.vim"
-  system "ln -s ~/dotfiles/vimfiles/ ~/.vim"
-  install_file('vimfiles/vimrc', '.vimrc')
-  install_file('vimfiles/nvimrc', '.config/nvim/init.vim')
+task :vim do
+  rm_rf "~/.vim"
   puts "Installing/Updating vundles..."
-  sh   "vim +BundleInstall! +BundleClean +qa" unless TEST_MODE
+  sh   "nvim +BundleInstall! +BundleClean +qa" unless TEST_MODE
   puts "Done!"
 end
 
@@ -82,16 +78,6 @@ task :dotfiles do
   file_list = Dir["*"].to_a
   file_list = file_list.delete_if { |file| BLACK_LIST.include?(file) }.compact 
   file_list.each {|file| install_file(file, ".#{file}")}
-end
-
-desc "instal YCM"
-task :ycm do
-  chdir "#{ENV['HOME']}/dotfiles/vimfiles/bundle/YouCompleteMe" do
-    sh "aptitude install cmake python2.7-dev python-pip" if os == :linux
-  ¦ sh "pip install --upgrade pip"
-  ¦ sh "pip install neovim"
-  ¦ sh "./install.py"
-  end
 end
 
 #helper functions
