@@ -58,7 +58,7 @@ task :install_config do
     Dir["config/**/*"].each do |file|
         to = file.gsub(%r{config/}, ".config/")
         if File.directory?(file)
-            mkdir_p to
+            mkdir_p "~/#{to}"
             next
         end
         install_file(file, to)
