@@ -88,7 +88,7 @@ Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.tags_cache'
 Plug 'neomake/neomake'
 autocmd! BufWritePost * Neomake
-Plug 'c-brenn/phoenix.vim'
+"Plug 'c-brenn/phoenix.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -115,6 +115,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'floobits/floobits-neovim'
 Plug 'file-line'
 Plug 'LargeFile'
+Plug 'StanAngeloff/php.vim'
 call plug#end()
 
 set t_Co=256
