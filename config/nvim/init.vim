@@ -66,6 +66,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='wombat'
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:deoplete#enable_at_startup = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
@@ -116,7 +117,6 @@ Plug 'file-line'
 Plug 'LargeFile'
 call plug#end()
 
-call deoplete#enable()
 set t_Co=256
 let g:solarized_terVmtrans = 1
 set background=dark
