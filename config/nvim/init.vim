@@ -1,7 +1,6 @@
 " autoinstall airline fonts
 if empty(glob('~/.config/nvim/fonts'))
-  !cd ~/.config/nvim
-  !git clone https://github.com/powerline/fonts.git
+  !cd ~/.config/nvim && git clone https://github.com/powerline/fonts.git
   !~/.config/nvim/fonts/install.sh
 endif
 " auto-install vim-plug
@@ -105,16 +104,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-dispatch'
 Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
-Plug 'camelcasemotion'
+Plug 'vim-scripts/camelcasemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'endel/vim-github-colorscheme'
-Plug 'twilight256.vim'
+Plug 'vim-scripts/twilight256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'floobits/floobits-neovim'
-Plug 'file-line'
-Plug 'LargeFile'
+Plug 'vim-scripts/file-line'
+Plug 'vim-scripts/LargeFile'
 Plug 'StanAngeloff/php.vim'
 call plug#end()
 
