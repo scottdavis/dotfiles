@@ -1,6 +1,6 @@
 " autoinstall airline fonts
 if empty(glob('~/.config/nvim/fonts'))
-  !cd ~/.config/nvim && git clone https://github.com/powerline/fonts.git
+  !git clone https://github.com/powerline/fonts.git ~/.config/nvim/fonts
   !~/.config/nvim/fonts/install.sh
 endif
 " auto-install vim-plug
