@@ -229,7 +229,7 @@ nnoremap <C-l> <C-w>l
 " Also replaces the annoying help button. Based on tip 821.
 map <F1> :ls<CR>:b<Space>
 set mouse=a
-let g:NERDTreeMouseMode=3
+let g:NERDTreeMouseMode=1
 
 
 try
