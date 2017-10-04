@@ -115,6 +115,7 @@ Plug 'floobits/floobits-neovim'
 Plug 'vim-scripts/file-line'
 Plug 'vim-scripts/LargeFile'
 Plug 'StanAngeloff/php.vim'
+Plug 'evidens/vim-twig'
 call plug#end()
 
 set t_Co=256
