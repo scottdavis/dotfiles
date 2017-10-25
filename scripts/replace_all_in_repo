@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+from = ARGV[0]
+to = ARGV[1]
+
+def get_all_files
+  `git ls-files`.split("\n")
+end
+
+
+get_all_files.each do |file|
+  fileData = File.read(file)
+  fileData.gsub!(from, to)
+  File.open(file, 'w') do |f|
+    f << fileData
+    end
+end
