@@ -5,6 +5,9 @@ if echo "$-" | grep i > /dev/null; then
   unset file;
 fi
 
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
+
 # use .localrc for settings specific to one system
 if [ -r ~/.localrc ]; then
   source ~/.localrc
