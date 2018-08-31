@@ -118,6 +118,7 @@ Plug 'vim-scripts/LargeFile'
 Plug 'StanAngeloff/php.vim'
 Plug 'evidens/vim-twig'
 Plug 'kassio/neoterm'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set t_Co=256
