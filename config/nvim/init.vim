@@ -82,6 +82,7 @@ let g:ctrlp_prompt_mappings = {
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 call plug#begin('~/.config/nvim/plugged')
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.tags_cache'

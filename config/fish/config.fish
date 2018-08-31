@@ -16,6 +16,10 @@ function grep --description 'Colorful grep that ignores binary file and outputs 
   command grep --color=always -I $argv
 end
 
+function gg --description 'git grep with color'
+  command git grep -n --color $argv
+end
+
 function gf --description 'Do a git fetch'
   command git fetch
 end
@@ -24,3 +28,5 @@ function gdeletemergedcurrent --description 'Delete all local branches that is a
   command git branch --merged | grep -v "\*" | grep -v "master" | xargs -n 1 git branch -d
   command git remote prune origin
 end
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
