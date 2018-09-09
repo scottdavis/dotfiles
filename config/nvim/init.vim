@@ -86,6 +86,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_cache_dir = '~/.tags_cache'
+let $MIX_ENV = 'test'
 Plug 'neomake/neomake'
 autocmd! BufWritePost * Neomake
 "Plug 'c-brenn/phoenix.vim'
