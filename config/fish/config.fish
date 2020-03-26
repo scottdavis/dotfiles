@@ -1,6 +1,6 @@
 source ~/.env
 source ~/.asdf/asdf.fish
-eval (direnv hook fish)
+"/usr/local/bin/direnv" export fish | source;
 alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
 
 # nice light cyan color instead of dark blue
