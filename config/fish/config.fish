@@ -1,6 +1,7 @@
 source ~/.env
 source ~/.asdf/asdf.fish
 eval (direnv hook fish)
+alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
 
 # nice light cyan color instead of dark blue
 set -gx LSCOLORS gxfxcxdxbxegedabagacad

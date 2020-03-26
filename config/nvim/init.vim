@@ -113,13 +113,14 @@ Plug 'vim-scripts/twilight256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'floobits/floobits-neovim'
+"Plug 'floobits/floobits-neovim'
 Plug 'vim-scripts/file-line'
 Plug 'vim-scripts/LargeFile'
 Plug 'StanAngeloff/php.vim'
 Plug 'evidens/vim-twig'
 Plug 'kassio/neoterm'
 Plug 'airblade/vim-gitgutter'
+Plug 'stevearc/vim-arduino'
 call plug#end()
 
 set t_Co=256
