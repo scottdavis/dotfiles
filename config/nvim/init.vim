@@ -96,6 +96,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'slashmili/alchemist.vim'
 let g:alchemist_tag_disable = 1
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+let deoplete#tag#cache_limit_size = 5000000
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+" do not forget to install jedi
+Plug 'deoplete-plugins/deoplete-jedi'
+" do not forget to install solargraph
+Plug 'uplus/deoplete-solargraph'
+Plug 'deoplete-plugins/deoplete-tag'
 " Tab complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 Plug 'tpope/vim-surround'

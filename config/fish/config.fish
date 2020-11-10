@@ -1,6 +1,6 @@
 source ~/.env
 source ~/.asdf/asdf.fish
-"/usr/local/bin/direnv" export fish | source;
+"/usr/local/bin/direnv" hook fish | source;
 alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
 
 # nice light cyan color instead of dark blue
@@ -44,8 +44,8 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
-
 set PATH ./bin $PATH
 set PATH /usr/local/bin $PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end

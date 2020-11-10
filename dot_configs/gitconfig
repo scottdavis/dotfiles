@@ -50,3 +50,5 @@
 	required = true
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
+[http]
+	cookiefile = /Users/sdavis/.gitcookies
