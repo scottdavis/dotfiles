@@ -63,9 +63,8 @@ let maplocalleader = "\\"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='wombat'
-let g:ctrlp_map = '<c-t>'
-let g:ctrlp_cmd = 'CtrlP'
 let g:deoplete#enable_at_startup = 1
+set statusline=...%{battery#component()}...
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
@@ -92,6 +91,9 @@ autocmd! BufWritePost * Neomake
 "Plug 'c-brenn/phoenix.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/nerdtree'
+let NERDTreeShowHidden=1
+nmap <C-x> :NERDTreeToggle<CR>
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'slashmili/alchemist.vim'
 let g:alchemist_tag_disable = 1
@@ -101,8 +103,6 @@ let deoplete#tag#cache_limit_size = 5000000
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 " do not forget to install jedi
 Plug 'deoplete-plugins/deoplete-jedi'
-" do not forget to install solargraph
-Plug 'uplus/deoplete-solargraph'
 Plug 'deoplete-plugins/deoplete-tag'
 " Tab complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -113,13 +113,41 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-dispatch'
 Plug 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
+nmap <F4> :TagbarToggle<CR>
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'p:protocols',
+        \ 'm:modules',
+        \ 'e:exceptions',
+        \ 'y:types',
+        \ 'd:delegates',
+        \ 'f:functions',
+        \ 'c:callbacks',
+        \ 'a:macros',
+        \ 't:tests',
+        \ 'i:implementations',
+        \ 'o:operators',
+        \ 'r:records'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 'p' : 'protocol',
+        \ 'm' : 'module'
+    \ },
+    \ 'scope2kind' : {
+        \ 'protocol' : 'p',
+        \ 'module' : 'm'
+    \ },
+    \ 'sort' : 0
+\ }
 Plug 'vim-scripts/camelcasemotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vim-scripts/twilight256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
+nmap <C-t> :CtrlP<CR>
 Plug 'cakebaker/scss-syntax.vim'
 "Plug 'floobits/floobits-neovim'
 Plug 'vim-scripts/file-line'
@@ -129,7 +157,11 @@ Plug 'evidens/vim-twig'
 Plug 'kassio/neoterm'
 Plug 'airblade/vim-gitgutter'
 Plug 'stevearc/vim-arduino'
+Plug 'lambdalisue/battery.vim'
+let g:airline#extensions#battery#enabled = 1
 call plug#end()
+
+let g:airline#extensions#tabline#show_splits = 1
 
 set t_Co=256
 let g:solarized_terVmtrans = 1
@@ -139,12 +171,12 @@ set background=dark
 nmap <leader>/ :call NERDComment(0, "invert")<cr>
 vmap <leader>/ :call NERDComment(0, "invert")<cr>
 " ,e for Ggrep
-  nmap <leader>g :silent Ggrep
-  " ,f for global git search for word under the cursor (with highlight)
-  nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
+nmap <leader>g :silent Ggrep
+" ,f for global git search for word under the cursor (with highlight)
+nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
 
-  " same in visual mode
-  :vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
+" same in visual mode
+:vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
 " Tabs
 set expandtab
@@ -171,7 +203,7 @@ function! OutdoorMode()
 endfunction
 
 function! NormalMode()
-    colorscheme twilight256
+  colorscheme twilight256
 endfunction
 
 
@@ -194,7 +226,7 @@ nmap <silent> <C-N> :silent noh<CR>
 " Ctrol-E to switch between 2 last buffers
 nmap <C-E> :b#<CR>
 
-" ,e to fast finding files. just type beginning of a name and hit TAB
+ ",e to fast finding files. just type beginning of a name and hit TAB
 nmap <leader>e :e **/
 
 " Make shift-insert work like in Xterm
@@ -228,18 +260,18 @@ nnoremap k gk
 
 " easier increment/decrement
 nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap - <C-s>
 
 " remove trailing spaces
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 " easy split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
 
-" Type <F1> follwed by a buffer number or name fragment to jump to it.
+" Type <F5> follwed by a buffer number or name fragment to jump to it.
 " Also replaces the annoying help button. Based on tip 821.
 map <F1> :ls<CR>:b<Space>
 set mouse=a

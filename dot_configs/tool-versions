@@ -1,2 +1,5 @@
 nodejs 11.0.0
 ruby 2.7.1
+python 3.6.2
+elixir 1.11.3-otp-23
+erlang 23.2.4
