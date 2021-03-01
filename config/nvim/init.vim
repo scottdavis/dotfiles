@@ -159,6 +159,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'stevearc/vim-arduino'
 Plug 'lambdalisue/battery.vim'
 let g:airline#extensions#battery#enabled = 1
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 let g:airline#extensions#tabline#show_splits = 1
