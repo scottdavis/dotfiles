@@ -101,10 +101,15 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 let deoplete#tag#cache_limit_size = 5000000
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-" do not forget to install jedi
+ "do not forget to install jedi
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'deoplete-plugins/deoplete-tag'
-" Tab complete
+ "Tab complete
+"
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 Plug 'tpope/vim-surround'
 Plug 'Raimondi/delimitMate'
@@ -153,6 +158,13 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'vim-scripts/file-line'
 Plug 'vim-scripts/LargeFile'
 Plug 'StanAngeloff/php.vim'
+let php_html_load=0
+let php_html_in_heredoc=0
+let php_html_in_nowdoc=0
+
+let php_sql_query=0
+let php_sql_heredoc=0
+let php_sql_nowdoc=0
 Plug 'evidens/vim-twig'
 Plug 'kassio/neoterm'
 Plug 'airblade/vim-gitgutter'
