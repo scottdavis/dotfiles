@@ -34,7 +34,8 @@ function fish_prompt
     set_color --bold white
     printf ' '
 
-    __informative_git_prompt
+    #__informative_git_prompt
+    fish_git_prompt
 
     # Line 2
     echo
