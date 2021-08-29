@@ -104,6 +104,7 @@ Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
  "do not forget to install jedi
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'deoplete-plugins/deoplete-tag'
+Plug 'fatih/vim-go'
  "Tab complete
 "
 Plug 'prabirshrestha/vim-lsp'
