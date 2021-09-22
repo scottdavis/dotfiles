@@ -1,6 +1,7 @@
-nodejs 11.0.0
+nodejs 16.5.0
 ruby 2.7.1
 python 3.6.2
 elixir 1.12.1-otp-24
 erlang 24.0.2
 golang 1.17
+php 7.4.14

@@ -63,7 +63,6 @@ let maplocalleader = "\\"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='wombat'
-let g:deoplete#enable_at_startup = 1
 set statusline=...%{battery#component()}...
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
@@ -89,7 +88,7 @@ let $MIX_ENV = 'test'
 Plug 'neomake/neomake'
 autocmd! BufWritePost * Neomake
 "Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist'
+"Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/nerdtree'
 let NERDTreeShowHidden=1
 nmap <C-x> :NERDTreeToggle<CR>
@@ -97,19 +96,29 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'slashmili/alchemist.vim'
 let g:alchemist_tag_disable = 1
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-let deoplete#tag#cache_limit_size = 5000000
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
  "do not forget to install jedi
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'deoplete-plugins/deoplete-tag'
 Plug 'fatih/vim-go'
  "Tab complete
 "
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'lighttiger2505/deoplete-vim-lsp'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
+
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
+Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+let g:coc_global_extensions = ['coc-solargraph']
+
 "
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 Plug 'tpope/vim-surround'
@@ -182,8 +191,8 @@ let g:solarized_terVmtrans = 1
 set background=dark
 
 " ,/ to invert comment on the current line/selection
-nmap <leader>/ :call NERDComment(0, "invert")<cr>
-vmap <leader>/ :call NERDComment(0, "invert")<cr>
+nmap <leader>/ :call nerdcommenter#Comment(0, "invert")<cr>
+vmap <leader>/ :call nerdcommenter#Comment(0, "invert")<cr>
 " ,e for Ggrep
 nmap <leader>g :silent Ggrep
 " ,f for global git search for word under the cursor (with highlight)
