@@ -43,12 +43,12 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+direnv hook fish | source;
 set PATH ./bin $PATH
 set PATH /usr/local/bin $PATH
 set PATH /opt/homebrew/bin $PATH
 set PATH /usr/local/google-cloud-sdk/bin $PATH
 
-direnv hook fish | source;
 set PATH /Users/sdavis/go/bin $PATH
 set PATH /Users/sdavis/.bin $PATH
 
