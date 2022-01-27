@@ -98,13 +98,33 @@ Plug 'slashmili/alchemist.vim'
 let g:alchemist_tag_disable = 1
  "do not forget to install jedi
 Plug 'fatih/vim-go'
+let g:coc_global_extensions = [
+  \  'coc-tsserver'
+  \, 'coc-tslint'
+  \, 'coc-html'
+  \, 'coc-css'
+  \, 'coc-yank'
+  \, 'coc-highlight'
+  \, 'coc-snippets'
+  \, 'coc-prettier'
+  \, 'coc-lists'
+  \, 'coc-json'
+  \, 'coc-solargraph'
+  \, 'coc-rls'
+  \, 'coc-python'
+  \, 'coc-go'
+  \, 'coc-elixir'
+  \, 'coc-tabnine'
+  \, 'coc-git'
+  \, 'coc-css'
+  \, 'coc-clangd'
+  \, 'coc-intelephense'
+  \]
  "Tab complete
 "
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'mattn/vim-lsp-settings'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
 autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
@@ -144,18 +164,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 Plug 'elixir-editors/vim-elixir'
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
-Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
-Plug 'yaegassy/coc-intelephense', {'do': 'yarn install --frozen-lockfile'}
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
-let g:coc_global_extensions = ['coc-solargraph']
-
 "
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 Plug 'tpope/vim-surround'
