@@ -34,5 +34,6 @@
       }
     }
   },
-  "elixirLS.dialyzerEnabled": false
+  "solargraph.bundlerPath": "/Users/sdavis/.asdf/shims/bundle",
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
 }
