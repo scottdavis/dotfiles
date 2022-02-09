@@ -1,6 +1,20 @@
-source ~/.env
-source ~/.asdf/asdf.fish
+if test -e ~/.env
+  source ~/.env
+end
+if test -e ~/.asdf/asdf.fish
+  source ~/.asdf/asdf.fish
+end
+if test -e /opt/homebrew/lib/asdf.fish
+  source /opt/homebrew/lib/asdf.fish
+end
 alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
+
+set PATH $PATH ./bin
+set PATH $PATH /usr/local/bin
+set PATH $PATH /opt/homebrew/bin
+set PATH $PATH /usr/local/google-cloud-sdk/bin
+
+set PATH /Users/sdavis/go/bin $PATH
 
 # nice light cyan color instead of dark blue
 set -gx LSCOLORS gxfxcxdxbxegedabagacad
@@ -36,6 +50,10 @@ function gf --description 'Do a git fetch'
   command git fetch
 end
 
+function gs --description 'Do a git status'
+  command git status
+end
+
 function gdeletemergedcurrent --description 'Delete all local branches that is already merged to current branch (exludes master)'
   command git branch --merged | grep -v "\*" | grep -v "master" | xargs -n 1 git branch -d
   command git remote prune origin
@@ -43,13 +61,9 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
-direnv hook fish | source;
-set PATH $PATH ./bin
-set PATH $PATH /usr/local/bin
-set PATH $PATH /opt/homebrew/bin
-set PATH $PATH /usr/local/google-cloud-sdk/bin
-
-set PATH /Users/sdavis/go/bin $PATH
+if test -e /opt/homebrew/bin/direnv
+  direnv hook fish | source;
+end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
