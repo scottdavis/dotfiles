@@ -10,13 +10,11 @@ if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
 
-set PATH $PATH ./bin
-set PATH $PATH /usr/local/bin
-set PATH $PATH /opt/homebrew/bin
-set PATH $PATH /usr/local/google-cloud-sdk/bin
-
-set PATH /Users/sdavis/go/bin $PATH
-
+fish_add_path ./bin
+fish_add_path /usr/local/bin
+fish_add_path /opt/homebrew/opt/curl/bin
+fish_add_path /opt/homebrew/bin
+fish_add_path /Users/sdavis/go/bin
 # nice light cyan color instead of dark blue
 set -gx LSCOLORS gxfxcxdxbxegedabagacad
 
@@ -65,6 +63,7 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 if test -e /opt/homebrew/bin/direnv
   direnv hook fish | source;
 end
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
