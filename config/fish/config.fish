@@ -2,10 +2,11 @@ if test -e ~/.env
   source ~/.env
 end
 if test -e ~/.asdf/asdf.fish
+  echo "loading asdf from local"
   source ~/.asdf/asdf.fish
 end
-if test -e /opt/homebrew/lib/asdf.fish
-  source /opt/homebrew/lib/asdf.fish
+if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
+  source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
 
@@ -67,3 +68,4 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
+
