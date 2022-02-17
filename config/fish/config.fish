@@ -10,6 +10,10 @@ if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
 
+if test -e /Applications/Postgres.app/Contents/Versions/14/bin/clusterdb
+  fish_add_path /Applications/Postgres.app/Contents/Versions/14/bin
+end
+
 fish_add_path ./bin
 fish_add_path /usr/local/bin
 fish_add_path /opt/homebrew/opt/curl/bin

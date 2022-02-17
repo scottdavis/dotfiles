@@ -148,6 +148,7 @@ let g:coc_global_extensions = [
   \, 'coc-git'
   \, 'coc-css'
   \, 'coc-clangd'
+  \, 'coc-omnisharp'
   \, '@yaegassy/coc-intelephense'
   \]
  "Tab complete
