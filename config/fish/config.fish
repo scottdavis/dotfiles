@@ -8,7 +8,10 @@ end
 if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
   source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
-alias arduino=/Applications/Arduino.app/Contents/MacOS/Arduino
+
+function reshim-golang
+  command asdf reshim golang && export GOROOT=(asdf where golang)"/go/"
+end
 
 if test -e /Applications/Postgres.app/Contents/Versions/14/bin/clusterdb
   fish_add_path /Applications/Postgres.app/Contents/Versions/14/bin
