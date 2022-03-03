@@ -1,6 +1,6 @@
 {
   "codeLens.enable": true,
-  "solargraph.useBundler": true
+  "solargraph.useBundler": true,
   "suggest.minTriggerInputLength": 2,
   "suggest.snippetIndicator": "►",
   "suggest.maxCompleteItemCount": 8,
@@ -37,6 +37,6 @@
   "solargraph.bundlerPath": "/Users/sdavis/.asdf/shims/bundle",
   "omnisharp.version": "v1.37.3",
   "omnisharp.trace.server": "information",
-  "omnisharp.debug.server": true
+  "omnisharp.debug.server": true,
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
 }
