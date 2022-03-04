@@ -419,6 +419,7 @@ command! OutdoorMode :call OutdoorMode()
 command! NormalMode :call NormalMode()
 
 
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -513,3 +514,6 @@ nnoremap <leader>9 9gt
 nnoremap <leader>w gt 
 nnoremap <leader>W gT 
 " }}
+"
+hi Pmenu ctermbg=238 guibg=238 ctermfg=255
+hi PmenuSel ctermbg=231 guibg=231

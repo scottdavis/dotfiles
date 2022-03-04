@@ -14,7 +14,7 @@ function reshim-golang
 end
 
 function gotest
-  command go test ./**/*_test.go
+  command go test ./...
 end
 
 if test -e /Applications/Postgres.app/Contents/Versions/14/bin/clusterdb
