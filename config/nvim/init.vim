@@ -90,10 +90,7 @@ set showmode
 
 let mapleader = ","
 let maplocalleader = "\\"
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='wombat'
-set statusline=...%{battery#component()}...
+
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
@@ -366,12 +363,17 @@ Plug 'airblade/vim-gitgutter'
 Plug 'stevearc/vim-arduino'
 Plug 'lambdalisue/battery.vim'
 let g:airline#extensions#battery#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='angr'
+set tabline=...%{battery#component()}...
+
 Plug 'mattn/emmet-vim'
 call plug#end()
 
 let g:airline#extensions#tabline#show_splits = 1
 
-set t_Co=256
+"set t_Co=256
 let g:solarized_terVmtrans = 1
 set background=dark
 
