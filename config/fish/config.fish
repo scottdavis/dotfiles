@@ -21,7 +21,6 @@ if test -e /Applications/Postgres.app/Contents/Versions/14/bin/clusterdb
   fish_add_path /Applications/Postgres.app/Contents/Versions/14/bin
 end
 
-fish_add_path ./bin
 fish_add_path /usr/local/bin
 fish_add_path /opt/homebrew/opt/curl/bin
 fish_add_path /opt/homebrew/bin
@@ -78,4 +77,6 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+set PATH ./bin $PATH
 
