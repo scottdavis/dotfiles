@@ -38,5 +38,9 @@
   "omnisharp.version": "v1.37.3",
   "omnisharp.trace.server": "information",
   "omnisharp.debug.server": true,
-  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "coc.preferences.formatOnSaveFiletypes": ["ruby", "erb",  "css", "tsx", "js", "php", "scss", "rb"]
 }
