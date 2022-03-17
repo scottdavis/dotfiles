@@ -520,4 +520,4 @@ nnoremap <leader>W gT
 hi Pmenu ctermbg=238 guibg=238 ctermfg=255
 hi PmenuSel ctermbg=231 guibg=231
 
-autocmd BufEnter *.turbo_stream.erb :set ft=html
+autocmd BufEnter *.turbo_stream.erb :set filetype=eruby.html
