@@ -9,12 +9,47 @@ if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
   source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 
+function kj
+  for x in (jobs -p); kill -9 $x; end
+end
+
 function reshim-golang
   command asdf reshim golang && export GOROOT=(asdf where golang)"/go/"
 end
 
 function gotest
   command go test ./...
+end
+
+function read_confirm
+  while true
+    read -l -P 'Do you want to continue? [y/N] ' confirm
+
+    switch $confirm
+      case Y y
+        return 0
+      case '' N n
+        return 1
+    end
+  end
+end
+
+function nv
+  if contains (jobs -c) "nvim"
+    set the_jobs (jobs | grep nvim | awk -F '\t' '{print $2}')
+    if test (count $the_jobs) -gt 1
+      echo "Notice: Multiple jobs running"
+      for j in (jobs | grep nvim); echo $j; end
+      echo "Picking $the_jobs[1] by default"
+      if read_confirm
+        fg $the_jobs[1]
+      end
+    else
+      fg $the_jobs[1]
+    end
+  else
+    command nvim $argv
+  end
 end
 
 if test -e /Applications/Postgres.app/Contents/Versions/14/bin/clusterdb
