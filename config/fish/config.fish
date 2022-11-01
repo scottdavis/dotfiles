@@ -108,7 +108,13 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 if test -e /opt/homebrew/bin/direnv
   direnv hook fish | source;
 end
+set PATH $PATH ./bin
+set PATH $PATH /usr/local/bin
+set PATH $PATH /opt/homebrew/bin
+set PATH $PATH /usr/local/google-cloud-sdk/bin
 
+
+direnv hook fish | source;
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
