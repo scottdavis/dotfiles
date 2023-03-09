@@ -9,6 +9,14 @@ if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
   source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 
+if test -e /Applications/Postgres.app/Contents/Versions/latest/bin/pg_config
+  fish_add_path /Applications/Postgres.app/Contents/Versions/latest/bin
+end
+
+if test -e /Users/sdavis/opt/miniconda3/bin/conda
+  fish_add_path /Users/sdavis/opt/miniconda3/bin
+end
+
 function kj
   for x in (jobs -p); kill -9 $x; end
 end
@@ -116,8 +124,14 @@ set PATH $PATH /usr/local/google-cloud-sdk/bin
 
 direnv hook fish | source;
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end
-
 set PATH ./bin $PATH
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /Users/sdavis/opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sdavis/Downloads/google-cloud-sdk/path.fish.inc'; end

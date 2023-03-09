@@ -42,5 +42,15 @@
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
   "solargraph.hover": true,
-  "coc.preferences.formatOnSaveFiletypes": ["ruby", "erb",  "css", "tsx", "js", "php", "scss", "rb"]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "ruby",
+    "erb",
+    "css",
+    "tsx",
+    "js",
+    "php",
+    "scss",
+    "rb"
+  ],
+  "snippets.ultisnips.pythonPrompt": false
 }

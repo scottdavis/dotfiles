@@ -1,6 +1,6 @@
 nodejs 16.14.0
 ruby 2.7.5
-elixir 1.12.1-otp-24
-erlang 24.0.2
-golang 1.17
+elixir 1.14
+erlang 25.1.2
+golang 1.19.3
 python 3.10.2
