@@ -34,3 +34,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
